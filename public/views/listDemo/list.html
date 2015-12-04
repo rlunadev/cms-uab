@@ -1,0 +1,17 @@
+<div class="container-demo1">
+	<div ng-repeat="item in list">
+		<div>
+			<a ui-sref="list.detalle({listId: item.id})"><h2> Noticia{{item.id}}</h2></a>
+		</div>
+	</div>
+</div>
+<div ui-view>
+	
+</div>
+<style type="text/css">
+	.container-demo1 {}
+
+	.container-demo1 h1 {
+		color:green;
+	}
+</style>

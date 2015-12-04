@@ -1,0 +1,309 @@
+<header id="header">
+        <div class="top-bar">
+            <div class="container">
+            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content login-modal">
+                            <div class="modal-header login-modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title text-center" id="loginModalLabel"> AUTENTICACION DE USUARIO</h4>
+                            </div>
+                            
+                            </div>
+                            
+                        </div>
+                   </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-xs-4">
+                        <div class="top-number"><p>
+                            <a class="btn btn-launch" ui-sref="main.login" style="color:white">INICIAR SESION</a>
+                        </p></div>
+                    </div>
+                    <div class="col-sm-6 col-xs-8">
+                       <div class="social">
+                            <ul class="social-share">
+                                <li><a target ="_blanck" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li> 
+                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                            </ul>
+                            <div class="search">
+                                <form role="form">
+                                    <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                                    <i class="fa fa-search"></i>
+                                </form>
+                           </div>
+                       </div>
+                    </div>
+                </div>
+            </div><!--/.container-->
+        </div><!--/.top-bar-->
+
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="./public/assets/images/logo.png" width="100" height="70" alt="logo"></a>
+                </div>
+                
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a ui-sref="main">INICIO</a></li>
+                        <li class="dropdown">
+                            <a ui-sref="main.noticias" class="dropdown-toggle" data-toggle="dropdown">ACTIVIDADES<i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="main.noticias">NOTICIAS</a></li>
+                                <li><a ui-sref="main.eventos">EVENTOS</a></li>
+                                <li><a ui-sref="main.comunicados">COMUNICADOS</a></li>
+                                <li><a ui-sref="main.convocatorias">CONVOCATORIAS</a></li>
+                            </ul>
+                        </li>
+                        <li><a ui-sref="main.quienesSomos">QUIENES SOMOS?</a></li>
+                        <!--<li><a href="blog.html">NOTICIAS</a></li>-->
+                        <li><a ui-sref="main.galeria">GALERIA</a></li>
+                        <!-- <li><a ui-sref="main.servicios">SERVICIOS</a></li>  -->
+                        <li><a ui-sref="main.contactos">CONTACTOS</a></li>
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+    </header><!--/header-->
+
+    <div ui-view>
+        <section id="main-slider" class="no-margin" ng-repeat="banner in banners">
+        <div class="carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#main-slider" data-slide-to="0" class="active"></li>
+                <li data-target="#main-slider" data-slide-to="1"></li>
+                <li data-target="#main-slider" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+
+                <div class="item active" style="background-image: url(./public/assets/images/subidas/1.jpg)">
+                    <div class="container">
+                        <div class="row slide-margin">
+                            <div class="col-sm-6">
+                                <div class="carousel-content">
+                                    <h1 class="animation animated-item-1">{{banner.titulo}}</h1>
+                                    <h2 class="animation animated-item-2">{{banner.contenido}}</h2>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 hidden-xs animation animated-item-4">
+                                <div class="slider-img">
+                                    <img src="{{banner.imagen2}}" class="img-responsive">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+        <a class="prev hidden-xs" href="#main-slider" data-slide="prev">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+        <a class="next hidden-xs" href="#main-slider" data-slide="next">
+            <i class="fa fa-chevron-right"></i>
+        </a>
+    </section><!--/#main-slider-->
+
+
+    <section id="feature" >
+<!--  sidebar categorias-->
+<!-- fin sidebar categorias-->
+<!--  noticias-->
+            <div class="col-md-1"></div>
+                <div class="col-md-7">
+                    <div class="blog">
+                        <div class="row"  ng-repeat="noticia in noticias">
+                              <h2>{{noticia.titulo}}</h2>
+                              <h2>{{noticia.contenido}}</h2>
+                        </div>
+                    </div><!--/.blog-item-->
+                        
+                    <ul class="pagination pagination-lg">
+                        <li><a href="#"><i class="fa fa-long-arrow-left"></i>Anterior</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">Siguiente<i class="fa fa-long-arrow-right"></i></a></li>
+                    </ul><!--/.pagination-->
+                </div><!--/.col-md-8-->
+<!-- fin noticias-->
+        <div class="col-md-4">
+            <h2>CALENDARIO</h2>
+               <div class="jquery-calendar" style="margin-left:25%;"></div>
+        <div style="overflow:hidden;">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div id="datetimepicker12"></div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                // $(function () {
+                //     $('#datetimepicker12').datetimepicker({
+                //         inline: true,
+                //         sideBySide: true
+                //     });
+                // });
+            </script>
+        </div>            
+      
+                    <h2>Comunicados</h2>
+                    <div  ng-repeat=" comunicado in comunicados | limitTo: 10">
+                                <p style="color:white">
+                                <!-- target="_blanck" -->
+                                <a href="comunicado.contenido({id_comunicados: comunicado.id_comunicados})"><h2> Comunicado{{comunicado.contenido}}</h2></a>
+                                <a target="_blanck" href="{{comunicado.contenido}}">{{comunicado.titulo}}</a>
+                                </p>
+                              </h3>
+                            </div>
+                <BR><BR>
+                <div class="col-xs-12 col-sm-12 wow fadeInDown" ng-repeat ="convocatoria in convocatorias | limitTo: 10">
+                <h2>Convocatorias</h2>
+                    <div class="media-body">
+                         <pre>{{convocatoria.titulo}} 
+                         
+                         <a target="_blanck" href="{{convocatoria.archivo}}"><button class="btn btn-danger">Descargar</button></a></pre>
+                    </div>
+                </div>
+            </div>
+    </section><!--/#feature-->
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 wow fadeInDown">
+                   <div class="tab-wrap" ng-repeat="evento in eventos | limitTo: 3"> 
+                        <div class="media">
+                            <div class="parrent pull-left">
+                                <ul class="nav nav-tabs nav-stacked">
+                                    <li class="active"><a href="#tab1" data-toggle="tab" class="analistic-01">EVENTO {{evento.id_eventos}}</a>
+                                    <div class="parrent media-body">
+                                        <div class="tab-content" >
+                                             <div class="tab-pane fade active in" id="tab2">
+                                                <div class="media">
+                                                    <div class="col-md-6">
+                                                        <h2>{{evento.titulo}}</h2>
+                                                        <img class="img-responsive" src="{{evento.imagen}}">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                    <p>{{evento.contenido}}</p>
+                                                    <button class="btn btn-primary">Ver mas...</button>
+                                                    </div>
+
+                                                </div>
+                                             </div>   
+                                        </div> <!--/.tab-content-->  
+                                    </div> <!--/.media-body--> 
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> <!--/.media-->     
+                    </div><!--/.tab-wrap-->               
+                </div><!--/.col-sm-6-->
+            </div><!--/.row-->
+        </div><!--/.container-->
+    </section><!--/#content-->
+
+    <section id="partner">
+        <div class="container">
+            <div class="center wow fadeInDown">
+                <h2>CARTERA</h2>
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
+            </div>    
+
+            <div class="partners">
+                <ul>
+                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms" src="./public/assets/images/partners/partner1.png"></a></li>
+                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" src="./public/assets/images/partners/partner2.png"></a></li>
+                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms" src="./public/assets/images/partners/partner3.png"></a></li>
+                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1200ms" src="./public/assets/images/partners/partner4.png"></a></li>
+                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1500ms" src="./public/assets/images/partners/partner5.png"></a></li>
+                </ul>
+            </div>        
+        </div><!--/.container-->
+    </section><!--/#partner-->
+
+    
+
+    <section id="bottom">
+        <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>ENLACES RELACIONADOS</h3>
+                        <ul>
+                            <li><a href="#">Sedede</a></li>
+                            <li><a href="#">Deporte Total</a></li>
+                            <li><a href="#">Ministerio de Deportes</a></li>
+                            
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>CONTACTENOS</h3>
+                        <ul>
+                            <li><a href="#">77747443-44442323</a></li>
+                            <li><a href="#">Av. Simon I. Patiño</a></li>
+                            <li><a href="#">Vinto-Cochabamba</a></li>
+                            
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>INTERESES</h3>
+                        <ul>
+                            <li><a href="#">Diseños</a></li>
+                            <li><a href="#">Actividades</a></li>
+                            <li><a href="#">Asesorias</a></li>
+                            <li><a href="#">Enlaces</a></li>
+                            <li><a href="#">Marketing</a></li>
+                         
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Patrocinadores</h3>
+                        <ul>
+                            <li><a href="#">Gobierno Municipal de Cochabamba</a></li>
+                            <li><a href="#">Gobierno Municipal de Cochabamba</a></li>
+                            <li><a href="#">Gobierno Municipal de Cochabamba</a></li>
+                            <li><a href="#">Gobierno Municipal de Cochabamba</a></li>
+                            
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+            </div>
+        </div>
+    </section><!--/#bottom-->
+
+</div>
+  
+<footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                        DERECHOS RESERVADOS ....
+                </div>
+                
+            </div>
+        </div>
+    </footer><!--/#footer-->

@@ -1,0 +1,168 @@
+<div class="container">
+<center><h3>NOTICIA</h3> </center>
+        <div class="row">
+            <div class="col-md-10">
+                <form id="form_comentarios" action="./ck/comentarios.php" method="POST" class="form-horizontal"> 
+                     
+                    <label>Titulo:</label>  
+                    <input id="titulo" type="text" name="titulo" placeholder="titulo" title="titulo" class="form-control" /><br>
+                    <label for="fecha">Fecha:</label>
+                    <input type="text" id="fecha" name="fecha" placeholder="Fecha" class="form-control" />
+                    <br> Contenido <br>   
+                    <p>
+                        <textarea class="ckeditor" id="contenido" name="contenido" rows="10" cols="80"></textarea>
+                    </p>
+                    <input id="submit" type="submit" name="submit" value="Registrar Noticia" class="form-control"/>  
+                </form>  
+            </div>
+        </div>
+</div>
+     <script type="text/javascript">
+     var editor = CKEDITOR.replace( 'contenido', {
+         filebrowserBrowseUrl : './ck/ckfinder/ckfinder.html',
+         filebrowserImageBrowseUrl : './ck/ckfinder/ckfinder.html?type=Images',
+         filebrowserFlashBrowseUrl : './ck/ckfinder/ckfinder.html?type=Flash',
+         filebrowserUploadUrl : './ck/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+         filebrowserImageUploadUrl : './ck/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+         filebrowserFlashUploadUrl : './ck/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
+     }); 
+     CKFinder.setupCKEditor( editor, '../' );
+     </script>
+
+
+      <!-- lista -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+      <table class="table table-bordered table-hover table-striped" id="tab_logic">
+        <thead>
+          <tr >
+          <th class="text-center">
+              Id
+            </th>
+            <th class="text-center">
+              Fecha
+            </th>
+            <th class="text-center">
+              Titulo
+            </th>
+            <th class="text-center">
+              Contenido
+            </th>
+            <th class="text-center">
+              Gestión
+            </th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr id='addr0'ng-repeat="noticia in noticias">
+            <td>
+            {{noticia.id_noticia}}
+            </td>
+            <td>
+            {{noticia.fecha}}
+            </td>
+            <td>
+            {{noticia.titulo}}
+            </td>
+            <td> 
+             <div ng-model="snippet">
+              
+             </div>
+            <div ng-bind-html="snippet">
+              
+             </div>
+            <!-- {{noticia.contenido}} -->
+              <script type="text/javascript">
+             // console.log({{noticia.contenidos}});
+              // function llena() {
+              //   alert("noticia");
+              //   $("#contenido_noticia").html("{{noticia.contenido}}");  
+              //     alert( $("#contenido_noticia").html("{{noticia.contenido}}"));
+              //     console.log( $("#contenido_noticia").html("{{noticia.contenido}}"));
+              //   }
+              // window.onload=llena;
+                </script> 
+            </td>
+            <td>
+             <button class="btn btn-danger" ng-click="deletenoticia(noticia, $index)">ELIMINAR</button>
+             <button class="btn btn-warning" ng-click="noticia_modal(noticia)" data-toggle="modal" data-target="#myModal">EDITAR</button>
+            </td>
+          </tr>
+          <tr id='addr1'></tr>
+        </tbody>
+      </table>
+</div>  
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content"ng-model="noticia">
+    <form class="form-horizontal" ng-submit="noticia_modifica(noticia,noticia.id_noticias)">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Editar</h4>
+      </div>
+    <div class="modal-body">
+      
+      <div class="form-group" >        
+        <label class="col-sm-2 control-label"> Id noticia</label>
+          <div class="col-sm-4">
+            <input type="text" value="{{noticia.id_noticias}}"ng-model="noticia.id_noticias" class="form-control"disabled="true"/>
+          </div>
+      </div>
+
+      <div class="form-group" >        
+        <label class=" control-label"> Estado</label>
+          <div class="">
+            <input type="text"value="{{noticia.estado}}"ng-model="noticia.estado" class="form-control"/>
+          </div>
+      </div>
+
+      <div class="form-group" >        
+        <label class=" control-label"> Titulo</label>
+          <div class="">
+            <input type="text"value="{{noticia.titulo}}"ng-model="noticia.titulo" class="form-control"/>
+          </div>
+      </div>
+      
+      <div class="form-group" >        
+        <label class="control-label"> Fecha</label>
+          <div class="">
+            <input type="date" value="{{noticia.fecha}}" ng-model="noticia.fecha" class="form-control"/>
+          </div>
+      </div>
+
+      <div class="form-group" >
+        <label for="fecha" class=" control-label">Contenido</label>
+          <div class="">
+            <textarea  value="{{noticia.contenido}}" ng-model="noticia.contenido" class="form-control">
+            </textarea>
+          </div>
+      </div>
+    
+      <div class="form-group" >
+        <label for="imagen" class=" control-label">Imagen</label>
+          <div class="">
+          <input type="text" value="{{item.imagen}}" ng-model="item.imagen"/> <br>  
+            <input type="file" ng-model="item.imagen" name="file" uploader-model="file" /> <br>  
+            <img src="{{noticia.imagen}}" height="150" width="150">
+          </div>
+      </div>
+      
+    </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-success">Guardar Cambios</button>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+    </div>
+    </form>
+    </div>
+  </div>
+</div>

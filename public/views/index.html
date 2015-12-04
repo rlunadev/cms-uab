@@ -1,0 +1,294 @@
+<!-- Styleswitcher
+================================================== -->
+        <div class="colors-switcher">
+            <a id="show-panel" class="hide-panel"><i class="fa fa-tint"></i></a>        
+                <ul class="colors-list">
+                    <li><a title="Light Red" onClick="setActiveStyleSheet('light-red'); return false;" class="light-red"></a></li>
+                    <li><a title="Blue" class="blue" onClick="setActiveStyleSheet('blue'); return false;"></a></li>
+                    <li class="no-margin"><a title="Light Blue" onClick="setActiveStyleSheet('light-blue'); return false;" class="light-blue"></a></li>
+                    <li><a title="Green" class="green" onClick="setActiveStyleSheet('green'); return false;"></a></li>
+                    <li class="no-margin"><a title="Black" class="black" onClick="setActiveStyleSheet('black'); return nfalse;"></a></li>
+                    <li><a title="Yellow" class="yellow" onClick="setActiveStyleSheet('yellow'); return false;"></a></li>
+                </ul>
+        </div>  
+    <div class="container">    
+    <!-- Start Navigation Section -->
+    <div class="navigation">
+        
+        <div class="navbar navbar-default navbar-fixed-top ">
+            <div class="navbar-header">
+                <!-- Stat Toggle Nav Link For Mobiles -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                        
+            </div>
+            <div class="navbar-collapse collapse">
+    
+                <!-- Start Navigation List -->
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="active" ui-sref="main">Inicio</a>
+                    </li>
+                    <li><a ui-sref="main.quienesSomos">Quienes Somos?</a></li>
+                    <li><a ui-sref="main.eventos">Eventos</a></li>
+                    <li><a ui-sref="main.comunicados">Comunicados</a></li>
+                    <li><a ui-sref="main.convocatorias">Convocatorias</a></li>
+                    <li><a ui-sref="main.galeria">Galeria</a></li>
+                    <li><a ui-sref="main.contactos">Contactos</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                <li ><a ui-sref="main.login">Iniciar Sesión</a></li>
+          </ul>
+                <!-- End Navigation List -->
+            </div>
+        </div>
+    </div>
+    <!-- End Navigation Section -->
+    <!-- begin ui-view -->
+    <div ui-view>
+      <div class="row">
+        <!-- Start Main Slider Section -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="header-section">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="top-social">
+                            <li><a href="#"> <img src="./public/assets/images/logo.png" class="img-responsive" alt="" height="70" width="70"></a></li>
+                            <li><a href="facebook.com" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="twitter.com" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="linkedin.com" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="flirk" class="flickr"><i class="fa fa-flickr"></i></a></li>
+                            <li><a href="google" class="google-plus"><i class="fa fa-google-plus"></i></a></li>
+                            <li><i class="fa fa-phone"></i>+591-65577878</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-slider hidden-sm hidden-xs" id="main-slider">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox" ng-repeat="banner in banners">
+                        <div class="">
+                            <img src="{{banner.imagen}}" class="img-responsive" alt="">
+                            <div class="carousel-caption">
+                                <h1>{{banner.titulo}}</h1>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- End Main Slider Section -->
+    
+    <!-- Start Latest News -->  <!-- Start Blog Page -->
+    <div class="row">
+        <div class="col-md-8 col-sm-8">
+            <div class="blog-section">
+                <!-- Start Post -->
+                <div class="blog-post image-post" ng-repeat="evento in eventos">
+                    <!-- Post Thumb -->
+                    <div class="post-head">
+                        <a href="{{evento.imagen}}" data-lightbox="blog-img">
+                            <img alt="" src="{{evento.imagen}}">
+                        </a>
+                    </div>
+                    <!-- Post Content -->
+                    <div class="post-content">
+                        <div class="post-type"><i class="fa fa-picture-o"></i></div>
+                            <h1><a href="#">{{evento.titulo}}</a></h1>
+                            <p>{{evento.contenido}}</p>
+                            <!-- <a class="btn btn-primary" href="#">Leer Mas... <i class="fa fa-angle-right"></i></a> -->
+                    </div>
+                </div>
+                <!-- End Post -->
+            </div>
+        </div>
+                <!--Sidebar-->
+        <div class="col-md-4 col-sm-4">
+                        
+            <div class="sidebar right-sidebar">
+                        
+                <!-- Categories Widget -->
+                <div class="widget widget-categories" ng-repeat="convocatoria in convocatorias">
+                    <h3 class="section-title">Convocatoria</h3>
+                    <ul>
+                        <li>
+                            <a href="{{convocatoria.archivo}}">{{convocatoria.titulo}}</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Recent Posts widget -->
+                <div class="widget widget-popular-posts" >
+                    <h3 class="section-title">Comunicados</h3>
+                    <ul ng-repeat="comunicado in comunicados">
+                        <li>
+                            <div class="widget-thumb">
+                                <a href=""><img src="{{comunicado.imagen}}" alt="" /></a>
+                            </div>
+                            <div class="widget-content">
+                                <h5><a href="#">{{comunicado.titulo}}</a></h5>
+                                <span>{{comunicado.fecha}}</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                       
+                    </ul>
+                </div>
+                
+                <!-- Popular Posts widget -->
+                <div class="widget widget-popular-posts">
+                    <h3 class="section-title">Eventos antiguos</h3>
+                    <ul ng-repeat="evento in eventos | orderBy:'fecha:true'">
+                        <li>
+                            <div class="widget-thumb">
+                                <a href=""><img src="{{evento.imagen}}" alt="" /></a>
+                            </div>
+                            <div class="widget-content">
+                                <h5><a href="">{{evento.contenido}}</a></h5>
+                                <span>{{evento.fecha}}</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+                </div>
+                        
+                <!-- Custom Post Widget -->
+                <div class="widget">
+                    <h3 class="section-title">Recordar</h3>
+                    <p>La Honorable Alcaldia Municipal de Entre Rios es una organizacion gubernamental</p>
+                </div>
+                
+                <!-- Tags Widget -->
+                <div class="widget widget-tags">
+                    <h3 class="section-title">Enlaces</h3>
+                    <div class="tagcloud">
+                        <a href="#">Cancilleria</a>
+                        <a href="#">Alcalcia de Cochabamba</a>
+                        <a href="#">Sicoes</a>
+                        <a href="#">Alcaldia de Vinto</a>
+                        <a href="#">Municipo de Sipe Sipe</a>
+                        <a href="#">Transparencia</a>
+                        <a href="#">Comunicación</a>
+                        <a href="#">Google</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--End sidebar-->
+        
+    </div>
+    <!-- End Blog Page -->
+
+
+
+        <div class="col-md-12">
+            <br>
+        </div>
+    </div>
+    <!-- End Latest News & Testimonial Section -->
+    </div>
+    </div>
+    <!-- END ui-view -->
+    
+    <!-- Start Footer Section -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="footer-section">
+                
+                <div class="row">
+                    
+                    <div class="col-md-3 col-sm-6">
+                        <div class="footer-address">
+                            <h3>Domicilio</h3>
+                            <address>
+                                 <h5>Oficina Central</h5>
+                                    <p>Av Simon I. Patiño <br>
+                                    N° 123</p>
+                                    <p>Telefono <br>
+                                    E-mail:deportes@fulldeporte.com</p>
+                            </address>
+                    
+                            <address>
+                                <h5>Oficina La Paz</h5>
+                                    <p>Sopocachi Calle Fernando Guachalla<br>
+                                    N° 434</p>
+                                    <p>Telefono:67676767 <br>
+                                    E-mail:deportes@fulldeporte.com</p>
+                            </address>
+                        </div>
+                    </div>
+                    
+                   
+                    
+                    <div class="col-md-3 col-sm-6">
+                        
+                    </div>
+                    
+                    <div class="col-md-3 col-sm-6">
+                        <div class="footer-social">
+                            <h3>Siguenos</h3>
+                            <ul>
+                                <li><a href="facebook.com"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="twitter.com"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="linkedin.com"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="google.com"><i class="fa fa-google-plus"></i></a></li>
+                                
+                            </ul>
+                            <h3>Suscribace</h3>
+                            <form class="navbar-form navbar-left" role="search">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="E-mail">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Suscribirse</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>        
+    </div>
+    <!-- End Footer Section -->
+    
+    <!-- Start Copyright Section -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="copyright-section">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="copy">&copy; Copyright 2015 || All Rights Reserved</div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="design">Design & Developed by <a href="http://graygrids.com">PHP</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Copyright Section -->
+    </div><!-- /.container -->
+    <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>

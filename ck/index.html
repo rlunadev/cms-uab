@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<head>
+    <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="ckfinder/ckfinder.js"></script>
+<style type="text/css">
+body{margin:50px; background-color: black}
+form{background-color: #ededed; padding: 20px;margin: 0 auto; width: 720px;}
+label{padding: 5px o; font-size: 1em;color:black; }
+input, textarea{width: 96%;padding: 5px 2%; color: #666; font-size: 1.2em;margin: 5px 0;}
+h1{ text-align: center;}
+</style>
+
+</head>
+<body>   
+    <form id="form_comentarios" action="comentarios.php" method="POST"> 
+     <h1>NOTICIAS</h1> 
+          <label>Titulo:</label>  
+    <input id="titulo" type="text" name="titulo" placeholder="titulo"   
+    title="titulo"  />  <br>
+    <label for="fecha">Fecha:</label>
+    <input type="text" id="fecha" name="fecha" placeholder="Fecha" />
+    <br> Contenido <br>   
+   <p>
+    <textarea class="ckeditor" id="contenido" name="contenido" rows="10" cols="80"></textarea>
+    </p>
+    <input id="submit" type="submit" name="submit" value="Enviar" />  
+    </form>  
+ <script type="text/javascript">
+ var editor = CKEDITOR.replace( 'contenido', {
+     filebrowserBrowseUrl : 'ckfinder/ckfinder.html',
+     filebrowserImageBrowseUrl : 'ckfinder/ckfinder.html?type=Images',
+     filebrowserFlashBrowseUrl : 'ckfinder/ckfinder.html?type=Flash',
+     filebrowserUploadUrl : 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+     filebrowserImageUploadUrl : 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+     filebrowserFlashUploadUrl : 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
+ }); 
+ CKFinder.setupCKEditor( editor, '../' );
+ </script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<h2> Convocatorias</h2>
+      <!-- lista -->
+<div class="table-responsive" style="max-width: 85%;">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <table class="table table-bordered table-hover" id="tab_logic">
+        <thead>
+          <tr >
+           
+            
+            <th class="text-center">
+              Fecha
+            </th>
+            <th class="text-center">
+              Titulo
+            </th>
+            <th class="text-center">
+              Contenido
+            </th>
+            <th class="text-center">
+              Archivo
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id='addr0'ng-repeat="convocatoria in convocatorias">
+            
+            <td>
+            {{convocatoria.fecha}}
+            </td>
+            <td>
+            {{convocatoria.titulo}}
+            </td>
+            <td>
+            {{convocatoria.contenido}}
+            </td>
+            <!-- <td> 
+             {{convocatoria.imagen}}
+            </td>-->
+            <td>
+             <a target="_blank" href="{{convocatoria.archivo}}"><button class="btn btn-danger">ver Archivo</button></a>
+            </td>
+          </tr>
+          <tr id='addr1'></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

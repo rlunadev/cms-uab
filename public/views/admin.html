@@ -1,0 +1,92 @@
+    <link href="./public/assets/css/charisma-app.css" rel="stylesheet">
+    <script src="./public/assets/js/charisma.js"></script>
+
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <!-- topbar starts -->
+    <div class="navbar navbar-default" role="navigation">
+
+        <div class="navbar-inner">
+            <button type="button" class="navbar-toggle pull-left animated flip">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"> <img alt="" src="./public/assets/images/logo.png" class="hidden-xs" width="50" height="50" />
+                <span>Entre Rios</span></a>
+
+            <!-- user dropdown starts -->
+            <div class="btn-group pull-right">
+                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> Usuario: Ronald</span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Perfil</a></li>
+                    <li class="divider"></li>
+                    <li><a href="login.html">Salir</a></li>
+                </ul>
+            </div>
+            <!-- user dropdown ends -->
+
+            <ul class="collapse navbar-collapse nav navbar-nav top-menu">
+                <li><a href="#"><i class="glyphicon glyphicon-globe"></i> Visitar Sitio Web</a></li>
+            </ul>
+
+        </div>
+    </div>
+    <!-- topbar ends -->
+<div class="ch-container">
+    <div class="row">
+        
+        <!-- left menu starts -->
+        <div class="col-sm-2 col-lg-2">
+            <div class="sidebar-nav">
+                <div class="nav-canvas">
+                    <div class="nav-sm nav nav-stacked">
+
+                    </div>
+                    <ul class="nav nav-pills nav-stacked main-menu">
+                        <li class="nav-header"><h1>MENÚ</h1></li>
+                        <li><a class="ajax-link" ui-sref="index.html"><i class="glyphicon glyphicon-home"></i><span> Inicio</span></a></li>
+                        <li><a class="ajax-link" ui-sref="admin.adminEvento"><i class="glyphicon glyphicon-eye-open"></i><span> Eventos</span></a></li>
+                        <li><a class="ajax-link" ui-sref="admin.adminComunicado"><i class="glyphicon glyphicon-edit"></i><span> Comunicados</span></a></li>
+                        <li><a class="ajax-link" ui-sref="admin.adminConvocatoria"><i class="glyphicon glyphicon-list-alt"></i><span> Convocatorias</span></a></li>
+                        <li><a class="ajax-link" ui-sref="admin.adminGaleria"><i class="glyphicon glyphicon-picture"></i><span> Galeria</span></a></li>
+                        <li><a class="ajax-link" ui-sref="admin.adminBanner"><i class="glyphicon glyphicon-calendar"></i><span> Bannner</span></a></li>
+                        <li><a class="ajax-link" ui-sref="admin.adminUsuario"><i class="glyphicon glyphicon-lock"></i><span> Usuarios</span></a></li>
+                        <li><a class="ajax-link" ui-sref="admin.adminNoticia"><i class="glyphicon glyphicon-font"></i><span> Noticias</span></a></li>
+                        <li><a class="ajax-link" ui-sref="grid.html"><i class="glyphicon glyphicon-th"></i><span> Actividades</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--/span-->
+        <!-- left menu ends -->
+
+        <noscript>
+            <div class="alert alert-block col-md-12">
+                <h4 class="alert-heading">Warning!</h4>
+
+                <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a>
+                    enabled to use this site.</p>
+            </div>
+        </noscript>
+
+        <div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+</div>
+<div ui-view>
+  <div class="row">
+        <h2>BIENVENIDO AL PANEL DE ADMINISTRADOR</h2>
+  </div>
+</div>
+    <footer class="row">
+        <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; <a href="http://usman.it" target="_blank">Tecnologia Web</a> 2014 - 2015</p>
+
+        <p class="col-md-3 col-sm-3 col-xs-12 powered-by">Powered by: <a
+                href="http://usman.it/free-responsive-admin-template">PHP ANGULAR</a></p>
+    </footer>
+
+</div><!--/.fluid-container-->

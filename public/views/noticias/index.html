@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <h2>NOTICIAS</h2>      <!-- lista -->
+        <div class="table-responsive">
+              <table class="table table-bordered table-hover table-striped" id="tab_logic">
+                <thead>
+                  <tr >
+                  <th class="text-center">
+                      Id
+                    </th>
+                    <th class="text-center">
+                      Titulo
+                    </th>
+                    <th class="text-center">
+                      Contenido
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr id='addr0'ng-repeat="noticia in noticias" >
+                    <td>
+                    {{noticia.id_noticia}}
+                    </td>
+                    <td>
+                    {{noticia.titulo}}
+                    </td>
+                    <td style="width:100px;">
+                    {{noticia.contenido}}
+                    </td>
+                  </tr>
+                  <tr id='addr1'></tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+  </div>
+</div>

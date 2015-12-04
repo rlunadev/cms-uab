@@ -1,0 +1,173 @@
+<b><h4 class="center">Nuevo Convocatoria</h4></b>
+  <form class="form-horizontal" ng-submit="saveconvocatoria(item)" id="idform">
+          <div class="form-group" >
+            <label for="titulo" class="col-sm-2 control-label">Titulo</label>
+            <div class="col-sm-4">
+              <input type="text" ng-model="item.titulo" class="form-control"  placeholder="Titulo del convocatoria"required>
+            </div>
+          </div>
+          <div class="form-group" >
+            <label for="estado" class="col-sm-2 control-label">Estado</label>
+            <div class="col-sm-4">
+              <input type="number" ng-model="item.estado" class="form-control"  placeholder="estado">
+            </div>
+          </div>
+          <div class="form-group" >
+            <label for="fecha" class="col-sm-2 control-label">Fecha</label>
+            <div class="col-sm-4">
+              <input type="date" ng-model="item.fecha" class="form-control" required>
+              
+            </div>
+          </div>
+          <!-- contenido -->
+          <div class="form-group" >
+            <label for="fecha" class="col-sm-2 control-label">Contenido</label>
+            <div class="col-sm-4">
+              <textarea ng-model="item.contenido" class="form-control"  placeholder="Contenido"required>
+              </textarea>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="fecha" class="col-sm-2 control-label">Subir Archivo</label>
+              <div class="col-sm-4">
+                <input type="file" name="file" uploader-model="file" required/> <br>  
+              </div>
+          </div>
+
+          <div class="form-group" >
+            <div class="col-sm-4">
+              <button type="submit" class="btn btn-primary" >Registrar</button>
+            </div>
+          </div>
+      </form>
+
+      <!-- lista -->
+      <div class="table-responsive" style="max-width: 85%;">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <table class="table table-bordered table-hover" id="tab_logic">
+        <thead>
+          <tr >
+          <th class="text-center">
+              Id
+            </th>
+            <th class="text-center">
+              Estado
+            </th>
+            <th class="text-center">
+              Fecha
+            </th>
+            <th class="text-center">
+              Titulo
+            </th>
+            <th class="text-center">
+              Contenido
+            </th>
+            <th class="text-center">
+              Archivo
+            </th>
+            <th class="text-center">
+              Gestión
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id='addr0'ng-repeat="convocatoria in convocatorias">
+            <td>
+            {{convocatoria.id_convocatorias}}
+            </td>
+            <td>
+            {{convocatoria.estado}}
+            </td>
+            <td>
+            {{convocatoria.fecha}}
+            </td>
+            <td>
+            {{convocatoria.titulo}}
+            </td>
+            <td>
+            {{convocatoria.contenido}}
+            </td>
+            <td>
+             <!-- <img src="{{convocatoria.imagen}}" height="100" width="100" id="imagen"> -->
+             <a target="_blanck"href="{{convocatoria.archivo}}"><button class="btn btn-danger">VER</button></a>
+
+            </td>
+            <td>
+             <button class="btn btn-danger" ng-click="deleteConvocatoria(convocatoria, $index)">ELIMINAR</button>
+             <button class="btn btn-warning" ng-click="convocatoria_modal(convocatoria)" data-toggle="modal" data-target="#myModal">EDITAR</button>
+            </td>
+          </tr>
+          <tr id='addr1'></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- MODAL -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content"ng-model="convocatoria">
+    <form class="form-horizontal" ng-submit="convocatoria_modifica(convocatoria,convocatoria.id_convocatorias)">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Editar</h4>
+      </div>
+    <div class="modal-body">
+      
+      <div class="form-group" >        
+        <label class="col-sm-2 control-label"> Id convocatoria</label>
+          <div class="col-sm-4">
+            <input type="text" value="{{convocatoria.id_convocatorias}}"ng-model="convocatoria.id_convocatorias"class="form-control"disabled="true"/>
+          </div>
+      </div>
+
+      <div class="form-group" >        
+        <label class=" control-label"> Estado</label>
+          <div class="">
+            <input type="text"value="{{convocatoria.estado}}"ng-model="convocatoria.estado"class="form-control"/>
+          </div>
+      </div>
+
+      <div class="form-group" >        
+        <label class=" control-label"> Titulo</label>
+          <div class="">
+            <input type="text"value="{{convocatoria.titulo}}"ng-model="convocatoria.titulo"class="form-control"/>
+          </div>
+      </div>
+      
+      <div class="form-group" >        
+        <label class="control-label"> Fecha</label>
+          <div class="">
+            <input type="date"value="{{convocatoria.fecha}}"ng-model="convocatoria.fecha"class="form-control"/>
+          </div>
+      </div>
+
+      <div class="form-group" >
+        <label for="fecha" class=" control-label">Contenido</label>
+          <div class="">
+            <textarea  value="{{convocatoria.contenido}}" ng-model="convocatoria.contenido" class="form-control">
+            </textarea>
+          </div>
+      </div>
+    
+      <div class="form-group" >
+        <label for="archivo" class=" control-label">Archivo</label>
+          <div class="">
+            <input type="file" ng-model="item.archivo" name="file" uploader-model="file" /> <br>  
+            <!-- <img src="{{convocatoria.archivo}}" height="150" width="150"> -->
+            <a target="_blanck"href="{{convocatoria.archivo}}"><button class="btn btn-danger">VER</button></a>
+          </div>
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-success">Guardar Cambios</button>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+    </div>
+    </form>
+    </div>
+  </div>
+</div>

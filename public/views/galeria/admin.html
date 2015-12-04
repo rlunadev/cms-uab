@@ -1,0 +1,167 @@
+<b><h4 class="center">Nuevo Imaen</h4></b>
+  <form class="form-horizontal" ng-submit="savegaleria(item)">
+          <div class="form-group" >
+            <label for="titulo" class="col-sm-2 control-label">Titulo</label>
+            <div class="col-sm-4">
+              <input type="text" ng-model="item.titulo" class="form-control"  placeholder="Titulo del Imagen">
+            </div>
+          </div>
+       
+          <!-- <div class="form-group" >
+            <label for="fecha" class="col-sm-2 control-label">Fecha</label>
+            <div class="col-sm-4">
+              <input type="date" ng-model="item.fecha_foto" class="form-control" min="2013-11-15" max="2015-12-12" placeholder="Fecha de galeria">
+            </div>
+          </div> -->
+
+          <!-- contenido -->
+          
+           <div class="form-group">
+            <label for="fecha" class="col-sm-2 control-label">Imagen</label>
+              <div class="col-sm-4">
+                <!-- <input type="text" ng-model="item.imagen" /><br> -->
+                <input type="file" ng-model="item.imagen" name="file[]" uploader-model="file" id ="file" multiple/> <br>  
+                <img src="{{item.imagen}}" width="100" width="100" >
+              </div>
+          </div>
+
+          <div class="form-group" >
+            <div class="col-sm-4">
+              <button type="submit" class="btn btn-primary" >Registrar</button>
+            </div>
+          </div>
+      </form>
+<div id="vista-previa"></div>
+  <div id="respuesta"></div>
+
+           <script>
+     $(function(){   
+       $("#file").on("change", function(){
+           /* Limpiar vista previa */
+           $("#vista-previa").html('');
+           var archivos = document.getElementById('file').files;
+           var navegador = window.URL || window.webkitURL;
+           alert(archivos);
+           alert(navegador);           
+           /* Recorrer los archivos */
+           for(x=0; x<archivos.length; x++)
+           {
+               /* Validar tamaño y tipo de archivo */
+
+               var size = archivos[x].size;
+               var type = archivos[x].type;
+               var name = archivos[x].name;
+               alert(name);
+               if (size > 1024*1024)
+               {
+                   $("#vista-previa").append("<p style='color: red'>El archivo "+name+" supera el máximo permitido 1MB</p>");
+               }
+               else if(type != 'image/jpeg' && type != 'image/jpg' && type != 'image/png' && type != 'image/gif')
+               {
+                   $("#vista-previa").append("<p style='color: red'>El archivo "+name+" no es del tipo de imagen permitida.</p>");
+               }
+               else
+               {
+                 var objeto_url = navegador.createObjectURL(archivos[x]);
+                 $("#vista-previa").append("<img src="+objeto_url+" width='250' height='250'>");
+               }
+           }
+       });
+       
+       $("#btn").on("click", function(){
+            var formData = new FormData($("#formulario")[0]);
+            var ruta = "multiple-ajax.php";
+            $.ajax({
+                url: ruta,
+                type: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(datos)
+                {
+                    $("#respuesta").html(datos);
+                }
+            });
+           });
+       
+     });
+    </script>
+
+
+
+
+      <!-- lista -->
+        <div class="table-responsive" style="max-width: 85%;">
+          <div class="row clearfix">
+            <div class="col-sm-12">
+              <div class="col-sm-3" id='addr0'ng-repeat="galeria in galerias">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <div class="panel-title">{{galeria.titulo}} {{galeria.id_galeria}}  </div>
+                  </div>
+                  <div class="panel-body" style="background:#fff; border:1px solid #2d9ae3;">
+                      <img src="{{galeria.imagen}}" id="imagen" width="180" height="180" ><br>
+                      <b>Fecha:</b> {{galeria.fecha_foto}} <br>
+                        <div class="col-sm-2">
+                          <input type="checkbox" ng-checked="true"/>
+                        </div>
+                    <div class="col-sm-12">
+                        <button class="btn btn-sm btn-danger" ng-click="deletegaleria(galeria, $index)">ELIMINAR</button>
+                        <button class="btn btn-sm btn-warning" ng-click="galeria_modal(galeria)" data-toggle="modal" data-target="#myModal">EDITAR</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<!-- MODAL -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content"ng-model="galeria">
+    <form class="form-horizontal" ng-submit="galeria_modifica(galeria,galeria.id_galerias)">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Editar</h4>
+      </div>
+    <div class="modal-body">
+      
+      <div class="form-group" >        
+        <label class="col-sm-2 control-label"> Id galeria</label>
+          <div class="col-sm-4">
+            <input type="text" value="{{galeria.id_galeria}}"ng-model="galeria.id_galeria"class="form-control"disabled="true"/>
+          </div>
+      </div>
+
+      <div class="form-group" >        
+        <label class=" control-label"> Titulo</label>
+          <div class="">
+            <input type="text"value="{{galeria.titulo}}"ng-model="galeria.titulo"class="form-control"/>
+          </div>
+      </div>
+      
+      <div class="form-group" >        
+        <label class="control-label"> Fecha</label>
+          <div class="">
+            <input type="text"value="{{galeria.fecha_foto}}"ng-model="galeria.fecha_foto"class="form-control"/>
+          </div>
+      </div>
+    
+      <div class="form-group" >
+        <label for="imagen" class=" control-label">Imagen</label>
+          <div class="">
+            <textarea  value="{{galeria.imagen}}" ng-model="galeria.imagen" class="form-control">
+            </textarea>
+          </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-success">Guardar Cambios</button>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+    </div>
+    </form>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,24 @@
+     <!-- Start Latest News -->  <!-- Start Blog Page -->
+     <br /><br />
+     <h1>Album de Fotos</h1>
+     <!-- Start Featured Project Section -->
+    <div class="row">
+        <div class="project-section project-3-col">
+            <div ng-repeat="galeria in galerias">
+                <!-- Start Portfolio items -->
+                    <div class="col-md-4">
+                        <a href="{{galeria.imagen}}" data-lightbox="blog-img">
+                        <div class="portfolio-item">
+                            <img src="{{galeria.imagen}}" class="img-responsive"  alt=""/>
+                            <div class="figure-caption">
+                                <h4>{{galeria.titulo}}</h4>
+                                
+                            </div>          
+                        </div>
+                        
+                    </div>
+                    </a>
+            </div>
+         </div>
+    </div>
+    <!-- End Featured Project Section -->

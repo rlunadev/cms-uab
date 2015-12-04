@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="jumbotron" height="100%">
+  <!-- <form  name="loginForm" ng-controller="LoginController" ng-submit="login(credentials)" novalidate> -->
+      <form  name="loginForm">
+        <div align="center">
+          <table>
+            <tr class="title-login" >
+              <th> </th>
+              <h2> Iniciar Sesion</h2>
+            </tr>
+            <tr>
+              <td><label  for="usuario">Usuario : </label></td>
+              <td><input class="form-control" type="text" id="username" ng-model="credentials.username"></td>
+            </tr>
+            <tr>
+              <td><label  for="password">Contraseña : </label></td>
+              <td><input class="form-control" type="password" id="password" ng-model="credentials.password"></td>
+            </tr>
+            <tr>
+              <th colspan="2">
+              <button id="submitrol" ui-sref="admin" type="submit"class="btn btn-success">Iniciar Sesion</button>
+              <button id="submitrol" ui-sref="main" class="btn btn-danger">Volver</button>
+              </th>
+            </tr>
+          </table>   
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
